@@ -3,8 +3,8 @@
         <header>
             <h1>My Friends</h1>
         </header>
-            <ul>
-                <!-- WORKING WITH DYNAMIC PROP VALUES
+        <ul>
+            <!-- WORKING WITH DYNAMIC PROP VALUES
 
                 -Just like any HTML elements we can bind attributes of our components to dynamic values using v-bind or just ( : )
 
@@ -21,17 +21,35 @@
 
                  -->
 
+            <!-- 
+                ****LISTENING TO  CUSTOM EVENTS EMMITED FROM CHILD COMPONENT 
+            ( Child => Parent Communication )
+            ************* 
 
-               <friend-contact
-                    v-for="friend in friends"
-                    :key="friend.id"
-                    :name ="friend.name"
-                    :phone-number ="friend.phone"
-                    :email-address ="friend.email"
-                    :is-favorite ="true"
-               >
-               </friend-contact>
-            </ul>
+            -We can listen to them (custom events) just like how we listen to click buttons using v-on or @click directives
+
+            e.g v-on:toggle-favorite or just use the shorthand @toggle-favorite
+
+            -And bind them to any javascript code/method which should be executed when this event is emitted
+            
+            -In our case, we add toggleFavoriteStatus as a method and bind to it
+            
+            
+            
+            -->
+
+
+            <friend-contact
+                v-for="friend in friends"
+                :key="friend.id"
+                :id="friend.id"
+                :name="friend.name"
+                :phone-number="friend.phone"
+                :email-address="friend.email" 
+                :is-favorite="friend.isFavorite"
+                @toggle-favorite="toggleFavoriteStatus">
+            </friend-contact>
+        </ul>
     </section>
 </template>
 
@@ -57,15 +75,27 @@ export default {
                 id : 'manuel',
                 name : 'Manuel Lorenz',
                 phone : '+254 4934 6734 783',
-                email : 'manuel@localhost.com'
+                email : 'manuel@localhost.com',
+                isFavorite : true,
             },
                 {
                 id : 'julie',
                 name : 'Julie Jones',
                 phone : '+119 934 6734',
-                email : 'julie@localhost.com'
+                email : 'julie@localhost.com',
+                isFavorite: false,
             },
             ],
+        }
+    },
+
+    methods : {
+
+        toggleFavoriteStatus(friendId){
+
+        const identifiedFriend =  this.friends.find( friend => friend.id === friendId )
+        
+            identifiedFriend.isFavorite = !identifiedFriend.isFavorite
         }
     },
 
