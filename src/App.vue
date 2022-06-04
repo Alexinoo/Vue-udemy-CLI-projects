@@ -1,4 +1,10 @@
 <template>
+    <section>
+        <h2>My Friends</h2>
+            <ul>
+                <li></li>
+            </ul>
+    </section>
 </template>
 
 
@@ -6,11 +12,13 @@
 /*
  - We create a standard JavaScript Object
 
- - We can store it in a variable if we want to
+ - We can store it in a variable if we want to;
+
+ -But instead we can export it directly by using export default
 
 */
 
-const app = {
+export default {
 
     data(){
 
