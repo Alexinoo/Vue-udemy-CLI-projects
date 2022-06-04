@@ -123,6 +123,24 @@
 
         */
 
+       /* ****DEFINING AND VALIDATING CUSTOM EVENTS *************
+
+        -Add another emits property in our config object as an array that defines which custom events will be emitted by the Child component
+
+        -This is useful because it makes it easier for other developers to understand your component and know which custom events are emitted from that component
+
+       emits : ['toggle-favorite' ]
+
+       - And you can take this to another level where you can add emits as an object where you add it as a key and provide a more detailed configuration
+
+       - You can pass a function with parameters that the emitter will pass to the Parent component
+
+       -You can also validate if the Id is passed and return true if that is the case;otherwise log a warning that probably that the ID was not Found
+
+
+
+       */
+
 
 
 
@@ -159,6 +177,18 @@
                 },
             },
 
+            emits: {
+                'toggle-favorite' : function(id){
+
+                    if(id){
+                        return true
+                    }else{
+                        console.warn('Id not found');
+                        return false
+                    }
+                }
+            },
+
             data(){
 
                 return {
@@ -173,7 +203,7 @@
 
                 toggleFavorite(){
                     
-                    this.$emit('toggle-favorite' , this.id) 
+                    this.$emit('toggle-favorite',this.id) 
                 },
             }
 
