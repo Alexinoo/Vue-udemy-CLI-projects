@@ -8,6 +8,7 @@
                     name ="Manuel Lorenz"
                     phone-number = " +254 6546 72430"
                     email-address = "manuel@localhost.com"
+                    is-favorite = "1"
                >
                </friend-contact>
 
@@ -15,12 +16,14 @@
                     name ="Julie Jones"
                     phone-number = " +254 8934 874"
                     email-address = "julie@localhost.com"
+                    is-favorite = "0"
                ></friend-contact>
 
                <friend-contact
                     name ="Alex Mwangi"
                     phone-number = " +254 717 316 925"
                     email-address = "alex@localhost.com"
+                     is-favorite = "1"
                ></friend-contact>
 
             </ul>
@@ -72,7 +75,7 @@ export default {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap'); */
 
 * {
     box-sizing: border-box;
