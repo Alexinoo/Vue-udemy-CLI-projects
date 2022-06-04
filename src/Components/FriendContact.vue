@@ -9,6 +9,7 @@
             <li><strong>Phone : </strong>{{ phoneNumber }}</li>
             <li><strong>Email : </strong> {{ emailAddress }}</li>
         </ul>
+        <button v-on:click="$emit('delete' , id )">Delete</button>
     </li>
 </template>
 
@@ -118,6 +119,19 @@
 
          -And now when the toggle-favorite is emitted will carry along the id prop which was supplied as an extra data
 
+         -*****OPTIONS FOR EMITTING***
+
+         <button v-on:click="deleteFriend"></button>
+
+         -You can call a deleteFriend function that emit
+           // deleteFriend(){
+                //     this.$emit('delete')
+                // }
+
+        -OR JUST EMIT directly
+
+          <button v-on:click="$emit('delete')"></button>
+
          -AND NOW WE ARE USING UNIDIRECTION DATA FLOW IN BOTH DIRECTIONS
           I.E. We are using it to pass props data from our App.vue to child component and we are also using it the other way round to emit a custom event from the child component with $emit()  and listening to this custom event in the App.vue to then make changes to the data in the App.vue and then Vue sees something has changed and then updates the UI
 
@@ -177,17 +191,19 @@
                 },
             },
 
-            emits: {
-                'toggle-favorite' : function(id){
+             emits: [ 'toggle-favorit' , 'delete'],
 
-                    if(id){
-                        return true
-                    }else{
-                        console.warn('Id not found');
-                        return false
-                    }
-                }
-            },
+            // emits: {
+            //     'toggle-favorite' : function(id){
+
+            //         if(id){
+            //             return true
+            //         }else{
+            //             console.warn('Id not found');
+            //             return false
+            //         }
+            //     }
+            // },
 
             data(){
 
