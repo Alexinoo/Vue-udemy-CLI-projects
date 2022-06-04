@@ -23,7 +23,6 @@
                     name ="Alex Mwangi"
                     phone-number = " +254 717 316 925"
                     email-address = "alex@localhost.com"
-                     is-favorite = "1"
                ></friend-contact>
 
             </ul>
