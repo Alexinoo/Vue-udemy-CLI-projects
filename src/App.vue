@@ -4,27 +4,33 @@
             <h1>My Friends</h1>
         </header>
             <ul>
+                <!-- WORKING WITH DYNAMIC PROP VALUES
+
+                -Just like any HTML elements we can bind attributes of our components to dynamic values using v-bind or just ( : )
+
+                e.g isFavorite currently works with a boolean value and thus we can bind it 
+                as v-bind:isfavorite = "true" or just :isFavorite = "true"
+
+                -We can also execute a javascipt conditions / or even call a method that returns truthy/falsy values
+
+                - We can use v-for , v-if to render data dynamically
+
+                -If you use v-for , You always have to use :key attribute
+
+                -Then we can bind every property dynamically since now we are looping using v-for
+
+                 -->
+
+
                <friend-contact
-                    name ="Manuel Lorenz"
-                    phone-number = " +254 6546 72430"
-                    email-address = "manuel@localhost.com"
-                    is-favorite = "1"
+                    v-for="friend in friends"
+                    :key="friend.id"
+                    :name ="friend.name"
+                    :phone-number ="friend.phone"
+                    :email-address ="friend.email"
+                    :is-favorite ="true"
                >
                </friend-contact>
-
-               <friend-contact
-                    name ="Julie Jones"
-                    phone-number = " +254 8934 874"
-                    email-address = "julie@localhost.com"
-                    is-favorite = "0"
-               ></friend-contact>
-
-               <friend-contact
-                    name ="Alex Mwangi"
-                    phone-number = " +254 717 316 925"
-                    email-address = "alex@localhost.com"
-               ></friend-contact>
-
             </ul>
     </section>
 </template>
@@ -62,10 +68,6 @@ export default {
             ],
         }
     },
-
-    // methods : {} ,
-
-    // computed : {},
 
 }
 
